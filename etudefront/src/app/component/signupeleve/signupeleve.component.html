@@ -1,0 +1,206 @@
+<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+  <div class="card shadow-sm p-4" style="min-width: 350px; max-width: 400px;">
+    <h3 class="text-center mb-4">Connexion</h3>
+
+    <form #signInNgForm="ngForm" (ngSubmit)="signUpEleve()">
+      <div *ngIf="showAlert" class="alert alert-danger text-center">
+        {{ message }}
+      </div>
+
+      <!-- Champ First Name -->
+      <div class="mb-3">
+        <label for="firstName" class="form-label">Prénom</label>
+        <input
+          type="text"
+          id="firstName"
+          name="firstName"
+          [(ngModel)]="eleve.firstName"
+          required
+          class="form-control"
+          placeholder="Entrez votre prénom"
+          #firstName="ngModel"
+        />
+      </div>
+
+      <!-- Champ Last Name -->
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Nom</label>
+        <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          [(ngModel)]="eleve.lastName"
+          required
+          class="form-control"
+          placeholder="Entrez votre nom"
+          #lastName="ngModel"
+        />
+      </div>
+
+      <!-- Champ Adresse -->
+      <div class="mb-3">
+        <label for="adress" class="form-label">Adresse</label>
+        <input
+          type="text"
+          id="adress"
+          name="adress"
+          [(ngModel)]="eleve.adress"
+          required
+          class="form-control"
+          placeholder="Entrez votre adresse"
+          #adress="ngModel"
+        />
+      </div>
+
+      <!-- Champ Téléphone -->
+      <div class="mb-3">
+        <label for="phone" class="form-label">Téléphone</label>
+        <input
+          type="text"
+          id="phone"
+          name="phone"
+          [(ngModel)]="eleve.phone"
+          required
+          class="form-control"
+          placeholder="Entrez votre téléphone"
+          #phone="ngModel"
+        />
+      </div>
+
+      <!-- Champ Email -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Adresse email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="eleve.email"
+          required
+          class="form-control"
+          placeholder="Entrez votre email"
+          #email="ngModel"
+        />
+        <div *ngIf="email.invalid && email.touched" class="text-danger small mt-1">
+          Email invalide
+        </div>
+      </div>
+
+      <!-- Champ Mot de passe -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Mot de passe</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="eleve.password"
+          required
+          minlength="4"
+          class="form-control"
+          placeholder="Entrez votre mot de passe"
+          #password="ngModel"
+        />
+        <div *ngIf="password.invalid && password.touched" class="text-danger small mt-1">
+          Mot de passe requis
+        </div>
+      </div>
+
+      <!-- Champ Date de naissance -->
+      <div class="mb-3">
+        <label for="dob" class="form-label">Date de naissance</label>
+        <input
+          type="date"
+          id="dob"
+          name="dob"
+          [(ngModel)]="eleve.dob"
+          required
+          class="form-control"
+          #dob="ngModel"
+        />
+      </div>
+
+      <!-- Champ Type de paiement -->
+      <div class="mb-3">
+        <label for="typePaiement" class="form-label">Type de paiement</label>
+        <input
+          type="text"
+          id="typePaiement"
+          name="typePaiement"
+          [(ngModel)]="eleve.typePaiement"
+          required
+          class="form-control"
+          placeholder="Ex: Espèces, Chèque..."
+          #typePaiement="ngModel"
+        />
+      </div>
+
+      <!-- Champ Niveau scolaire -->
+      <div class="mb-3">
+        <label for="niveauScolaire" class="form-label">Niveau scolaire</label>
+        <select
+          id="niveauScolaire"
+          name="niveauScolaire"
+          [(ngModel)]="eleve.niveauScolaire"
+          required
+          class="form-control"
+          #niveauScolaire="ngModel"
+        >
+          <option *ngFor="let niveau of niveaux" [value]="niveau">
+            {{ niveau }}
+          </option>
+        </select>
+      </div>
+      <div class="mb-3">
+  <label for="dob" class="form-label">Date of Birth</label>
+  <input
+    type="date"
+    id="dob"
+    name="dob"
+    [(ngModel)]="eleve.dob"
+    required
+    class="form-control"
+    #dob="ngModel"
+  />
+</div>
+
+      <!-- Champ Statut paiement -->
+      <div class="mb-3">
+        <label for="statutPaiement" class="form-label">Statut paiement</label>
+        <input
+          type="text"
+          id="statutPaiement"
+          name="statutPaiement"
+          [(ngModel)]="eleve.statutPaiement"
+          class="form-control"
+          placeholder="Statut du paiement"
+          #statutPaiement="ngModel"
+        />
+      </div>
+
+      <!-- Champ Statut affectation -->
+      <div class="mb-3">
+        <label for="statutAffectation" class="form-label">Statut affectation</label>
+        <input
+          type="text"
+          id="statutAffectation"
+          name="statutAffectation"
+          [(ngModel)]="eleve.statutAffectation"
+          class="form-control"
+          placeholder="Statut affectation"
+          #statutAffectation="ngModel"
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary w-100"
+        [disabled]="signInNgForm.invalid || isSubmitting"
+      >
+        Connexion
+      </button>
+    </form>
+
+    <div class="text-center mt-3">
+      <a href="#" class="small">Mot de passe oublié ?</a>
+    </div>
+  </div>
+</div>

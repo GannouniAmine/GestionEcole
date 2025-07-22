@@ -1,0 +1,159 @@
+<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+  <div class="card shadow-sm p-4" style="min-width: 350px; max-width: 400px;">
+    <h3 class="text-center mb-4">Connexion</h3>
+
+    <form #signInNgForm="ngForm" (ngSubmit)="signUpProfesseur()">
+      <div *ngIf="showAlert" class="alert alert-danger text-center">
+        {{ message }}
+      </div>
+
+      <!-- Champ First Name -->
+      <div class="mb-3">
+        <label for="firstName" class="form-label">Prénom</label>
+        <input
+          type="text"
+          id="firstName"
+          name="firstName"
+          [(ngModel)]="professeur.firstName"
+          required
+          class="form-control"
+          placeholder="Entrez votre prénom"
+          #firstName="ngModel"
+        />
+      </div>
+
+      <!-- Champ Last Name -->
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Nom</label>
+        <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          [(ngModel)]="professeur.lastName"
+          required
+          class="form-control"
+          placeholder="Entrez votre nom"
+          #lastName="ngModel"
+        />
+      </div>
+
+      <!-- Champ Adresse -->
+      <div class="mb-3">
+        <label for="adress" class="form-label">Adresse</label>
+        <input
+          type="text"
+          id="adress"
+          name="adress"
+          [(ngModel)]="professeur.adress"
+          required
+          class="form-control"
+          placeholder="Entrez votre adresse"
+          #adress="ngModel"
+        />
+      </div>
+
+      <!-- Champ Téléphone -->
+      <div class="mb-3">
+        <label for="phone" class="form-label">Téléphone</label>
+        <input
+          type="text"
+          id="phone"
+          name="phone"
+          [(ngModel)]="professeur.phone"
+          required
+          class="form-control"
+          placeholder="Entrez votre téléphone"
+          #phone="ngModel"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">cin</label>
+        <input
+          type="text"
+          id="phone"
+          name="phone"
+          [(ngModel)]="professeur.cin"
+          required
+          class="form-control"
+          placeholder="Entrez votre téléphone"
+          #phone="ngModel"
+        />
+      </div>
+       <div class="mb-3">
+        <label for="phone" class="form-label">Date de Debut de Travail</label>
+        <input
+          type="date"
+          id="phone"
+          name="phone"
+          [(ngModel)]="professeur.dateDebutTravail"
+          required
+          class="form-control"
+          placeholder="Entrez votre téléphone"
+          #phone="ngModel"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">Diplome</label>
+        <input
+          type="text"
+          id="phone"
+          name="phone"
+          [(ngModel)]="professeur.diplome"
+          required
+          class="form-control"
+          placeholder="Entrez votre téléphone"
+          #phone="ngModel"
+        />
+      </div>
+      
+
+      <!-- Champ Email -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Adresse email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="professeur.email"
+          required
+          class="form-control"
+          placeholder="Entrez votre email"
+          #email="ngModel"
+        />
+        <div *ngIf="email.invalid && email.touched" class="text-danger small mt-1">
+          Email invalide
+        </div>
+      </div>
+
+      <!-- Champ Mot de passe -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Mot de passe</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="professeur.password"
+          required
+          minlength="4"
+          class="form-control"
+          placeholder="Entrez votre mot de passe"
+          #password="ngModel"
+        />
+        <div *ngIf="password.invalid && password.touched" class="text-danger small mt-1">
+          Mot de passe requis
+        </div>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary w-100"
+        [disabled]="signInNgForm.invalid || isSubmitting"
+      >
+        Connexion
+      </button>
+    </form>
+
+    <div class="text-center mt-3">
+      <a href="#" class="small">Mot de passe oublié ?</a>
+    </div>
+  </div>
+</div>
