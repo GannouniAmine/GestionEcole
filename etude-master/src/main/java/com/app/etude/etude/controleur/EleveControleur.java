@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.etude.etude.dto.Listeleve;
 import com.app.etude.etude.models.Eleve;
 import com.app.etude.etude.services.EleveServices;
 
@@ -26,5 +27,12 @@ public class EleveControleur {
 	{
 		return Eleveservices.findElevebyid(id);
 	}
+	
+	@GetMapping("/listalleleveByClasse/{idclasse}")
+	   public List<Listeleve> listeleveByClasse (@PathVariable("idclasse") Long idclasse) {
+	       // TODO Auto-generated method stub
+	       return Eleveservices.listAllEleveByClasses(idclasse);
+	   }
+
 	
 }

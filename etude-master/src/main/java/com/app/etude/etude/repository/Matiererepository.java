@@ -12,6 +12,6 @@ import com.app.etude.etude.models.Matiere;
 
 public interface Matiererepository extends JpaRepository<Matiere,Long> {
 	
-	List<Matiere> findByNomContainingIgnoreCase(String nom);
+	List<Matiere> findByNomMatiereContainingIgnoreCase(String nom);
 
 }

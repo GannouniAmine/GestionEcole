@@ -1,41 +1,50 @@
 package com.app.etude.etude.models;
-import java.sql.Date;
-import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
+
+
+import java.util.List;
+
 
 @Entity
-@Table(name="matiere")
-@AllArgsConstructor //contructeur parametrer
-@NoArgsConstructor //constructeur par default
-@Setter 
 @Getter
-@Builder
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@SuperBuilder
 public class Matiere {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO) // Génère les ID automatiquement
-	private Long id ;
-	@Column
-	private int coeff;
-	private int duree;
-	private String nom;
-	@OneToMany(fetch=FetchType.LAZY)
+	@GeneratedValue(strategy =GenerationType.AUTO )
+	private Long idMatiere;
+	private String nomMatiere;
+	private String coeficient;
+	 private String cover;
+	private Integer duree;
+	/*@OneToMany(fetch = FetchType.LAZY)
+	private List<EmpTemps> seancs;*/
+	@ManyToMany(fetch = FetchType.LAZY)
+	private List<Examen> examen;
+	@ManyToMany(fetch = FetchType.LAZY)
+	private List<Professeur> professeur; 
+	@OneToMany(fetch = FetchType.LAZY)
 	private List<Devoir> devoirs;
-	@OneToMany(fetch=FetchType.LAZY)
+	/*@ManyToOne()
+	@JoinColumn(name = "niveau_id")
+	private Niveau niveau;*/
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Agentadministratif agentadministratif;
+	@OneToMany(fetch = FetchType.LAZY)
 	private List<Cours> cours;
-	@OneToMany(fetch=FetchType.LAZY)
-	private List<Emploie> emploie;
+
+
 }
+
+
+
 

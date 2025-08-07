@@ -13,5 +13,6 @@ public interface ClassesServices {
 	ClassesDto UpdateClasse(ClassesDto a);
 	void DeleteById(Long id);
 	public List<Labelvalueclasse> listeclasse();
+	void Ajoutereleveauclasse(Long idclasse, Long ideleve);
 	
 }

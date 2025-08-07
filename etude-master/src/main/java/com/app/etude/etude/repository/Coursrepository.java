@@ -8,5 +8,5 @@ import com.app.etude.etude.models.Cours;
 
 public interface Coursrepository extends JpaRepository<Cours,Long> {
 	
-	 List<Cours> findByClasses_IdAndMatiere_Id(Long classId, Long matiereId);
+	 //List<Cours> findByClasses_IdAndMatiere_Id(Long classId, Long matiereId);
 }

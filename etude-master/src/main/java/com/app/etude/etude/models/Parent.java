@@ -23,10 +23,12 @@ import com.app.etude.etude.security.models.User;
 @SuperBuilder
 @DiscriminatorValue("parent") //chaque parent enregistrer sa valeur utiliser dans une colonne descriminante
 public class Parent extends User {
-	@Column
+	
 	private String description;
-	@OneToMany(mappedBy ="parent", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
 	private List<Eleve> eleves;
+	@OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
+	private List<Reglement> reglements;
 	
 
 }

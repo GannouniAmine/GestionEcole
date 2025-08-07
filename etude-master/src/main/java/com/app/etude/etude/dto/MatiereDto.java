@@ -1,40 +1,68 @@
 package com.app.etude.etude.dto;
 
-import com.app.etude.etude.models.Classes;
-import com.app.etude.etude.models.Matiere;
 
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+
+
+
+import java.util.List;
+
+import com.app.etude.etude.models.Matiere;
+
+
 @Builder
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class MatiereDto {
+	private Long idMatiere;
+	private String nomMatiere;
+	private String coeficient;
+	 private String cover;
+	private Integer duree;
+    private Long niveauId;
+    private List<Long> seancsIds;
+    private List<Long> examenIds;
+    private List<Long> professeurIds;
+    private List<Long> devoirsIds;
 
-	private Long id ;
-	private int coeff;
-	private int duree;
-	private String nom;
-	
-	 public static Matiere toEntity(MatiereDto dto) {
-	        return Matiere.builder()
-	                .id(dto.getId())
-	                .coeff(dto.getCoeff())
-	                .duree(dto.getDuree())
-	                .nom(dto.getNom())
-	                .build();
-	    }
 
-	    public static MatiereDto fromEntity(Matiere entity) {
-	        return MatiereDto.builder()
-	                .id(entity.getId())
-	                .coeff(entity.getCoeff())
-	                .duree(entity.getDuree())
-	                .nom(entity.getNom())
-	                .build();
-	    }
+    public static Matiere toEntity(MatiereDto request)
+    {
+        return Matiere.builder()
+                .idMatiere(request.getIdMatiere())
+                .nomMatiere(request.getNomMatiere())
+                .coeficient(request.getCoeficient())
+                .cover(request.getCover())
+                .duree(request.getDuree())
+                .build();
+
+
+    }
+    public static MatiereDto fromEntity(Matiere request)
+    {
+        return MatiereDto.builder()
+                .idMatiere(request.getIdMatiere())
+                .nomMatiere(request.getNomMatiere())
+                .coeficient(request.getCoeficient())
+                .duree(request.getDuree())
+                .cover(request.getCover())
+                .build();
+
+
+    }
 }
+
+
+
+

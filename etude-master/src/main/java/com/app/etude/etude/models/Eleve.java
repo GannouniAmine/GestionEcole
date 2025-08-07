@@ -22,6 +22,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.app.etude.etude.security.models.User;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @SuperBuilder
@@ -29,11 +30,15 @@ import com.app.etude.etude.security.models.User;
 @NoArgsConstructor //constructeur par default
 @Setter 
 @Getter
-public class Eleve extends User{
-	@Column
+public class Eleve extends User{	
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private LocalDate dob;
 	@Enumerated(EnumType.STRING)
-	private  NiveauScolaire niveauScolaire;
+	private NiveauScolaire  niveauScolaire;
+	private String typePaiement;
+	private String statutPaiement;
+	private String statutAffectation;
+
 	@OneToMany(fetch=FetchType.LAZY)
 	private List<Absence> absences;
 	@ManyToOne(fetch=FetchType.LAZY)

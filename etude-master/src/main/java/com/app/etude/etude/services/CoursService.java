@@ -16,8 +16,8 @@ public interface CoursService {
 	    CoursDto findCourById(Long id);
 	    void deleteCourById(Long courId);
 	    CoursDto uploadcoursfile(Long Idarticle, MultipartFile image);
-	    CoursDto createCours(CoursDto coursDto, Authentication connectedUser);
-	    List<ListCour> findAllCoursByclasseAndmatiere(Long classId, Long matiereId);
+	    CoursDto createCours(CoursDto coursDto,Authentication connectedUser);
+	    //List<ListCour> findAllCoursByclasseAndmatiere(Long classId, Long matiereId);
 	    List<Listeprof> findAllprof();
 
 }

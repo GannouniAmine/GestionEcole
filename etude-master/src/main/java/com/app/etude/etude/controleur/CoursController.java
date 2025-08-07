@@ -65,10 +65,10 @@ public class CoursController {
 	public ResponseEntity<Resource> downloadTeacherImage(@PathVariable String imageName, HttpServletRequest request) {
 		return this.imageStorage.downloadUserImage(imageName, request);
 	}
-    @GetMapping("/listallcoursbyclassandmatiere/{idclasse}/{idmatiere}")
+    /*@GetMapping("/listallcoursbyclassandmatiere/{idclasse}/{idmatiere}")
     public List<ListCour> listecourByClasse (@PathVariable Long idclasse , @PathVariable Long idmatiere) {
         return coursService.findAllCoursByclasseAndmatiere(idclasse, idmatiere);
-    }
+    }*/
     
     @GetMapping("/listerprof")
     public List<Listeprof> findAllprof() {

@@ -49,6 +49,10 @@ public class ClasseController {
         return classesServices.listeclasse();
     }
 	
+	@GetMapping("/elevetoclasse/{idclasse}/{ideleve}")
+	   public void  affectereleveauclasse (@PathVariable("idclasse") Long idclasse,@PathVariable("ideleve") Long ideleve) {
+		classesServices.Ajoutereleveauclasse(idclasse, ideleve);}
+
 	
 	
 	

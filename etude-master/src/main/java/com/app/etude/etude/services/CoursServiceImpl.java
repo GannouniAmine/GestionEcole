@@ -4,6 +4,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -21,6 +22,7 @@ import com.app.etude.etude.repository.Classesrepository;
 import com.app.etude.etude.repository.Coursrepository;
 import com.app.etude.etude.repository.Matiererepository;
 import com.app.etude.etude.repository.ProfesseurRepository;
+import com.app.etude.etude.security.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,13 +54,22 @@ public class CoursServiceImpl implements CoursService {
 	        optionalCours.orElseThrow(() -> new RuntimeException("Cours not found with id: " + id));
 	        return CoursDto.fromEntity(optionalCours.get());
 	    }
-
-
+	    
+	    /*public User getCurrentUser() {
+		    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		    if (authentication != null && authentication.getPrincipal() instanceof User) {
+		        return (User) authentication.getPrincipal(); // si User implémente UserDetails
+		    }
+		    return null;
+		}*/
 	   @Override
-	    public CoursDto createCours(CoursDto coursDto ,Authentication connectedUser) {
-//	        Professeur professeur = professeurRepository.findById(coursDto.getProfesseurId(), Authentication connectedUser,)
-//	                .orElseThrow(() -> new EntityNotFoundException("No Professeur found with ID:: " + coursDto.getProfesseurId()));
-	        Professeur professeur = ((Professeur) connectedUser.getPrincipal());
+	    public CoursDto createCours(CoursDto coursDto,Authentication connectedUser) {
+		   
+		   
+	        //Professeur professeur = professeurRepository.findById(102)
+	               // .orElseThrow(() -> new EntityNotFoundException("No Professeur found with ID:: " + this.getCurrentUser().getId()));
+	         Professeur professeur = ((Professeur) connectedUser.getPrincipal());
+	        //System.out.println(professeur.getFirstName());
 	        Matiere matiere = matiereRepository.findById(coursDto.getMatiereId())
 	                .orElseThrow(() -> new EntityNotFoundException("No Matiere found with ID:: " + coursDto.getMatiereId()));
 
@@ -80,12 +91,12 @@ public class CoursServiceImpl implements CoursService {
 	    }  
 
 
-	    @Override
+	    /*@Override
 	    public List<ListCour> findAllCoursByclasseAndmatiere(Long classId, Long matiereId) {
 	        return coursRepository.findByClasses_IdAndMatiere_Id(classId,matiereId).stream()
 	                .map(ListCour::fromEntity)
 	                .collect(Collectors.toList());
-	    }
+	    }*/
 
 
 	    @Override

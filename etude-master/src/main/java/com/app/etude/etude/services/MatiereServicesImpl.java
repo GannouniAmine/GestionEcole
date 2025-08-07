@@ -51,10 +51,10 @@ return MatiereDto.fromEntity(m);
 
 	@Override
 	public MatiereDto UpdateMatiere(MatiereDto a) {
-		Matiere matiere = matiereRepository.findById(a.getId())
-                .orElseThrow(() -> new RuntimeException("Classe non trouvée avec id: " + a.getId()));
+		Matiere matiere = matiereRepository.findById(a.getIdMatiere())
+                .orElseThrow(() -> new RuntimeException("Classe non trouvée avec id: " + a.getIdMatiere()));
 		 
-		matiere.setCoeff(a.getCoeff());;
+		matiere.setCoeficient(a.getCoeficient());;
 		matiere.setDuree(a.getDuree());
 		Matiere classsaved = matiereRepository.save(matiere);
 		return MatiereDto.fromEntity(classsaved);
@@ -62,7 +62,7 @@ return MatiereDto.fromEntity(m);
 
 	@Override
 	public List<MatiereDto> ChercherMatiere(String nom) {
-		List<Matiere> classesList = matiereRepository.findByNomContainingIgnoreCase(nom);
+		List<Matiere> classesList = matiereRepository.findByNomMatiereContainingIgnoreCase(nom);
         return classesList.stream()
                           .map(MatiereDto::fromEntity)
                           .collect(Collectors.toList());
