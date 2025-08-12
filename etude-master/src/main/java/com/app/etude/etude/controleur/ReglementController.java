@@ -25,7 +25,7 @@ public class ReglementController {
 
 
     @GetMapping("/lister")
-    public List<ReglementDto> findAllReglements() {
+    public List<ListReglement> findAllReglements() {
         return reglementService.findAllReglements();
     }
 

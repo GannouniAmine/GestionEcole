@@ -19,6 +19,8 @@ public interface EleveRepository extends JpaRepository<Eleve, Long> {
 	   List<Eleve> listAllEleveByClasse(Long id);
 	   @Query("select u from Eleve u where u.parent.id = ?1 ")
 	   List<Eleve> listEleveByParent(Long id);
+	   
+	  
 
 
 }

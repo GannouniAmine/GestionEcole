@@ -12,7 +12,7 @@ import com.app.etude.etude.models.NiveauScolaire;
 
 
 public interface ReglementService {
-    List<ReglementDto> findAllReglements();
+    List<ListReglement> findAllReglements();
     ReglementDto findReglementById(Long reglementId);
     ReglementDto createReglement(ReglementDto reglementDto);
     void deleteReglementById(Long reglementId);

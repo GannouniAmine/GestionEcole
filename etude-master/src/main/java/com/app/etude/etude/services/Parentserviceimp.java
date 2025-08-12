@@ -41,11 +41,7 @@ public class Parentserviceimp implements ParentService {
         Optional<Eleve> optionalEleve = (eleveRepository.findByEmail(email));
         if (optionalEleve.isPresent()) {
             Eleve eleve = optionalEleve.get();
-
-
             eleve.setParent(parent);
-
-
             eleveRepository.save(eleve);
         }
     }

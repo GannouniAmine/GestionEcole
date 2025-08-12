@@ -2,6 +2,7 @@ package com.app.etude.etude.controleur;
 
 import java.util.List;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,19 +10,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.etude.etude.dto.Listeleve;
 import com.app.etude.etude.models.Eleve;
+import com.app.etude.etude.services.ClassesServices;
 import com.app.etude.etude.services.EleveServices;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
-@RequestMapping("/api/Eleve")
+@RequestMapping("/api/v1/Eleve")
+@RequiredArgsConstructor
 public class EleveControleur {
 	
-	private EleveServices Eleveservices;
+	private final EleveServices Eleveservices;
 	
-	@GetMapping("/allEleve")
-    public List<Eleve> findAllEleves()
-	{
-		return Eleveservices.findAllEleves();
-	}
 	@GetMapping("/{id}")
     public Eleve findElevebyid(@PathVariable Long id)
 	{
@@ -34,5 +34,17 @@ public class EleveControleur {
 	       return Eleveservices.listAllEleveByClasses(idclasse);
 	   }
 
+	@GetMapping("/listalleleveByParentId")
+	   public List<Listeleve> listeleveByParentId (Authentication connectedUser) {
+	       // TODO Auto-generated method stub
+	       return Eleveservices.listAllEleveByParentId(connectedUser);
+	   }
+	
+	@GetMapping("/listalleleve")
+	   public List<Listeleve> listeleve() {
+	       // TODO Auto-generated method stub
+	       return Eleveservices.listAllEleve();
+	}
+	
 	
 }

@@ -30,9 +30,9 @@ public class ReglementServiceImpl implements ReglementService {
 
 
     @Override
-    public List<ReglementDto> findAllReglements() {
+    public List<ListReglement> findAllReglements() {
         return reglementRepository.findAll().stream()
-                .map(ReglementDto::fromEntity)
+                .map(ListReglement::fromEntity)
                 .collect(Collectors.toList());
     }
 

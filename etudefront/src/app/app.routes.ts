@@ -7,6 +7,8 @@ import { GestionCoursComponent } from './component/gestion-cours/gestion-cours.c
 import { GestionClasseComponent } from './component/gestion-classe/gestion-classe.component';
 import { GestionMatiereComponent } from './component/gestion-matiere/gestion-matiere.component';
 import { SignupprofesseurComponent } from './component/signupprofesseur/signupprofesseur.component';
+import { GestionParentComponent } from './component/gestion-parent/gestion-parent.component';
+import { GestionReglementComponent } from './component/gestion-reglement/gestion-reglement.component';
 export const routes: Routes = [
     {path: 'login', component: SigninComponent},
     {path: 'registereleve', component: SignupeleveComponent},
@@ -15,4 +17,6 @@ export const routes: Routes = [
     {path : 'gestionmatiere' , component : GestionMatiereComponent},
     {path : 'gestioncours' , component : GestionCoursComponent},
     {path : 'registerprofesseur' , component : SignupprofesseurComponent},
+    {path : 'gestionparent', component: GestionParentComponent},
+    {path : 'gestionreglement', component: GestionReglementComponent},
 ];

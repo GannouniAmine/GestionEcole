@@ -17,13 +17,9 @@ public class ListReglement {
     private String modePaiement;
     private Date operation;
     private Double montant;
-    private Elevedto eleve;
-
-
-
-
-
-
+    private String nomeleve;
+    private String nomparent;
+    
     public static Reglement toEntity(ListReglement request)
     {
 
@@ -42,8 +38,9 @@ public class ListReglement {
                 .modePaiement(request.getModepaiement())
                 .operation(request.getOperation())
                 .montant(request.getMontant())
-                .eleve(Elevedto.fromEntity(request.getEleve()))
-                        .build();
+                .nomeleve(Elevedto.fromEntity(request.getEleve()).getFirstName() + Elevedto.fromEntity(request.getEleve()).getLastName())
+        		.nomparent(Parentdto.fromEntity(request.getParent()).getFirstName() + Parentdto.fromEntity(request.getParent()).getLastName())
+        		.build();
 
 
     }

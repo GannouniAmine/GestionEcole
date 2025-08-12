@@ -1,0 +1,103 @@
+<h2 class="mb-4 text-center text-primary fw-bold" style="font-size: 2em;">
+  Liste des règlements
+</h2>
+
+<!-- Bouton Ajouter -->
+<div class="mb-3 text-end">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <i class="bi bi-plus-circle me-1"></i> Ajouter règlement
+  </button>
+</div>
+
+<!-- Modal Ajouter -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content shadow-lg">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title fw-bold" id="exampleModalLabel">Ajouter un règlement</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Mode de paiement</label>
+              <input class="form-control" id="modepaiement" required [(ngModel)]="reglement.modepaiement"
+                name="modepaiement" type="text" placeholder="Mode de paiement" />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Montant</label>
+              <input class="form-control" id="montant" required [(ngModel)]="reglement.montant" name="montant"
+                type="number" placeholder="Montant" />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Opération</label>
+              <input class="form-control" id="operation" required [(ngModel)]="reglement.operation" name="operation"
+                type="text" placeholder="Opération" />
+            </div>
+
+            <div class="col-md-6">
+              <label for="eleveId" class="form-label fw-semibold">Élève</label>
+              <select [(ngModel)]="reglement.eleveId" name="eleveId" class="form-select" id="eleveId">
+                <option value="-1" disabled selected>Sélectionner un élève</option>
+                <option *ngFor="let item of eleveList" [value]="item.id">
+                  {{item.firstName}} {{item.lastName}}
+                </option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label for="parentId" class="form-label fw-semibold">Parent</label>
+              <select [(ngModel)]="reglement.parentId" name="parentId" class="form-select" id="parentId">
+                <option value="-1" disabled selected>Sélectionner un parent</option>
+                <option *ngFor="let item of parentList" [value]="item.id">
+                  {{item.firstName}} {{item.lastName}}
+                </option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Fermer
+        </button>
+        <button (click)="createReglement()" type="button" class="btn btn-primary">
+          <i class="bi bi-save me-1"></i> Enregistrer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tableau -->
+<div class="table-responsive mt-4">
+  <table class="table table-striped table-hover align-middle text-center">
+    <thead class="table-primary">
+      <tr>
+        <th>Mode paiement</th>
+        <th>Montant</th>
+        <th>Opération</th>
+        <th>Parent</th>
+        <th>Élève</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of reglements">
+        <td>{{item.modePaiement}}</td>
+        <td>{{item.montant}}</td>
+        <td>{{item.operation}}</td>
+        <td>{{item.nomparent}}</td>
+        <td>{{item.nomeleve}}</td>
+        <td>
+          <button (click)="deleteReglement(item.id)" class="btn btn-sm btn-danger">
+            <i class="bi bi-trash"></i> Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
